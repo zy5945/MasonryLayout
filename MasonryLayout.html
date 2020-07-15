@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MasonryLayout</title>
+  <style>
+    #box{
+      width:50%;
+      margin:0 auto;
+      column-count: 4;
+      column-gap:0;
+    }
+    .img_box{
+      padding: 2px;
+      position: relative;
+      counter-increment:img_box-counter ;
+    }
+    .img_box img{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .img_box::after{
+      position: absolute;
+      width:20px;
+      height:20px;
+      background:rgba(0,0,0,.5);
+      left:0;
+      top:0;
+      color: #fff;
+      content:counter(img_box-counter);
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+</body>
+<script>
+/*
+* 这种排列方式主要使用了
+* column-count: 4;
+      column-gap:0;
+      这两个css属性实现
+      但是排列方式主要是一列一列的从上到下排列，
+      加入想换一种排列比如按日期排列，那么这种排列方式就不能实现从上到下从左到右的排列
+*
+* */
+  var maps=``;
+      for(let i=1;i<17;i++){
+          maps+=`<div class="img_box"><img src="./imgs/${i}.jpg" alt=""></div>`
+      }
+  box.innerHTML=maps;
+</script>
+</html>
