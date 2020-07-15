@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox</title>
+  <style>
+    #box{
+      width:50%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 1000px;
+    }
+    .img_box{
+      padding: 2px;
+      position: relative;
+      width:25%;
+      box-sizing: border-box;
+      counter-increment:img_box-counter ;
+    }
+    .img_box img{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .img_box::after{
+      position: absolute;
+      width:20px;
+      height:20px;
+      background:rgba(0,0,0,.5);
+      left:0;
+      top:0;
+      color: #fff;
+      content:counter(img_box-counter);
+    }
+    .img_box:nth-child(4n+1){
+      order:1;
+    }
+    .img_box:nth-child(4n+2){
+      order:2;
+    }
+    .img_box:nth-child(4n+3){
+      order:3;
+    }
+    .img_box:nth-child(4n+4){
+      order:4;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  /*
+  * 用弹性盒模型来写瀑布流必须知道他的盒子高度，分为几行，否则不能呈现想要的效果*/
+    var maps=``;
+    for(let i=1;i<17;i++){
+        maps+=`<div class="img_box"><img src="./imgs/${i}.jpg" alt=""></div>`
+    }
+    box.innerHTML=maps;
+</script>
+</body>
+</html>
